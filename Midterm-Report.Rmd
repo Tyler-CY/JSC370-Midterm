@@ -603,7 +603,7 @@ crime_vs_population <- merge(
 crime_vs_population %>%
   ggplot(aes(x = `Population, 2016`, y = Count, color=Offence)) +
   geom_point() +
-  geom_smooth(method = 'lm', se=F) + 
+  geom_smooth(method = 'lm', se=F, color='black') + 
   facet_wrap(~Offence, scales = 'free') + 
   labs(
     title = 'Relationship between Neighbourhood Population and Number of MCI Offence Occurrence (Toronto 2016)',
@@ -893,9 +893,9 @@ crime_vs_minority <- crime_vs_minority %>%
 ```{r crime-vs-minority-plot, echo = F, fig.width = 18, fig.height = 9, warning=F, message=F}
 crime_vs_minority %>%
   pivot_longer(cols = 6:11, names_to = 'Offence', values_to = 'Count') %>%
-  ggplot(aes(x = Minority_Ratio, y = Count)) +
+  ggplot(aes(x = Minority_Ratio, y = Count, color=Offence)) +
   geom_point() +
-  geom_smooth(method = 'lm', se=F) + 
+  geom_smooth(method = 'lm', se=F, color='black') + 
   facet_wrap(~Offence, scales = 'free') + 
   labs(
     title = 'Relationship between Neighbourhood Visible Minority Proportion\nand Number of MCI Offence Occurrence (Toronto 2016)',
@@ -940,7 +940,7 @@ crime_vs_income %>%
   pivot_longer(cols = 4:9, names_to = 'Offence', values_to = 'Count') %>%
   ggplot(aes(x = .[[2]], y = Count, color = Offence)) +
   geom_point() +
-  geom_smooth(method = 'lm', se=F) + 
+  geom_smooth(method = 'lm', se=F, color='black') + 
   facet_wrap(~Offence, scales = 'free') + 
   labs(
     title = 'Relationship between Neighbourhood Average Income (by Average Income Tax)\nand Number of MCI Offence Occurrence (Toronto 2016)',
